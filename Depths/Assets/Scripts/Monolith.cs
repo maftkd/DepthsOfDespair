@@ -55,6 +55,7 @@ public class Monolith : MonoBehaviour
 	Slider _sens;
 	Slider _vol;
 	float _sensMult=1;
+	Button _exit;
 	public AudioMixer _mixer;
 
 	//audio sources
@@ -499,8 +500,10 @@ public class Monolith : MonoBehaviour
 		_options = GameObject.Find("OptionsCanvas").GetComponent<Canvas>();
 		_sens = _options.transform.Find("Sensitivity").GetComponent<Slider>();
 		_vol = _options.transform.Find("Volume").GetComponent<Slider>();
+		_exit = _options.transform.Find("Exit").GetComponent<Button>();
 		_sens.onValueChanged.AddListener(delegate {SetSensitivity();});
 		_vol.onValueChanged.AddListener(delegate {SetVolume();});
+		_exit.onClick.AddListener(delegate {Application.Quit();});
     }
 
 	void SetSensitivity(){
